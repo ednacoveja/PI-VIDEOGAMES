@@ -1,0 +1,28 @@
+.all{
+    background-image: url(https://cdn.wallpapersafari.com/83/79/dVL8SI.png);
+    height: 40rem;
+    padding-top: 1rem;
+    padding-bottom: 2.4rem;
+}
+
+.title{
+    color:#dbac29;
+}
+
+.homeButton{
+    height:10rem;
+    width:10rem;
+    border-radius: 100px;
+
+    color:white;
+    background-color: #181203;
+    font-size:3rem;
+    font-weight:900;
+    margin-top: 21rem;
+
+}
+.homeButton:hover{
+    color:#023047;
+    border-color:#023047;
+    background-color: #EE9B00;
+}

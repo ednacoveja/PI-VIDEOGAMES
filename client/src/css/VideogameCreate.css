@@ -1,0 +1,86 @@
+.form{
+    display: inline-block;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 0.5rem;
+
+    background-color: rgba(231, 134, 44, 0.404);
+
+    height: 100%;
+    width: 40%;
+    
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    text-align: center;
+    position: center;
+    align-content: center;
+    left: 12.5%;
+    bottom: 7%;
+    margin-top: 4%;
+    
+}
+
+
+.label{
+    color: #f7f3ee;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+.option{
+    height:2.5rem;
+    border-radius: 10px;
+
+    color:white;
+    background-color: #a77314;
+    font-size:1rem;
+    font-weight:900;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.buttonCreate{
+
+    border-radius: 100px;
+    color:white;
+    background-color: #dbac29;
+    font-size:2rem;
+    font-weight:900;
+
+}
+.buttonCreate:hover{
+    color:#023047;
+    border-color:#023047;
+    background-color: #EE9B00;
+}
+
+.buttonHome{
+   
+    color:white;
+    background-color:  #dbac29;
+    font-size:1rem;
+    font-weight:900;
+
+}
+.buttonHome:hover{
+    color:#023047;
+    border-color:#023047;
+    background-color: #EE9B00;
+}
+
+.input{
+    padding-left: 20px;
+    border-radius: 6px;
+    color:rgb(255, 255, 255);
+    text-shadow: 0px 0px 10px rgb(15, 227, 255);
+    border: solid 2px #ccc;
+    outline: none;
+    background-color: #0f0f0f13;
+}
+
+.input:focus{
+    border-color: rgb(15, 227, 255);
+
+}

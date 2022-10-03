@@ -1,0 +1,22 @@
+
+.filters{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    color:#EE9B00;
+    font-weight: 900;
+
+}
+
+.showSelector{
+    height:2.5rem;
+    border-radius: 10px;
+
+    color:white;
+    background-color: #EE9B00;
+    font-size:1rem;
+    font-weight:900;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}

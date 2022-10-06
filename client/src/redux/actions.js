@@ -29,11 +29,29 @@ export function getNameVideogame(name) {
         payload: json.data,
       });
     } catch (error) {
-      alert("Juego No Encontrado");
+      //alert("Juego No Encontrado");
       console.log(error);
+      alert(error.response.data);//viene del back
     }
   };
 }
+
+//promesa
+/*export function getNameVideogame(name) {
+  return function (dispatch) {
+     axios("http://localhost:3001/videogames?name=" + name)
+      .then((json) => {
+        dispatch({
+          type: "GET_NAME",
+          payload: json.data,
+        });
+      })
+      .catch((error) => {
+        alert(error.response.data)
+      });
+  };
+}*/
+
 
 export function filterByCreate(value) {
   return {
@@ -77,7 +95,7 @@ export function getDetail(id) {
         payload: json.data,
       });
     } catch (error) {
-      alert("Juego No Encontrado");
+      alert(error.response.data);
       console.log(error);
     }
   };
@@ -88,6 +106,7 @@ export function clearDetail() {
     type: "CLEAR_DETAIL",
   };
 }
+
 export function getPlatforms() {
   return async function (dispatch) {
     let json = await axios("http://localhost:3001/platforms");
@@ -97,6 +116,7 @@ export function getPlatforms() {
     });
   };
 }
+
 export function postVideogame(payload) {
   return async function (dispatch) {
     try {

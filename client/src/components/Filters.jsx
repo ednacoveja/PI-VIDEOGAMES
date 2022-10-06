@@ -10,7 +10,7 @@ import "../css/Filters.css";
 export default function Filters() {
   const dispatch = useDispatch();
 
-  const genres = useSelector((state) => state.genres);
+  const allgenres = useSelector((state) => state.genres);
   const platforms = useSelector((state) => state.allPlatforms);
 
   function handlerFilterCreate(e) {
@@ -39,10 +39,10 @@ export default function Filters() {
         <option value="" hidden>
           Filter by Genres
         </option>
-        {console.log(genres)}
-        {genres &&
-          genres.map((g) => (
-            <option value={g.name} key={g.id}>
+        {console.log(allgenres)}
+        {allgenres &&
+          allgenres.map((g) => (
+            <option value={g.name} key={g.name}>
               {g.name}
             </option>
           ))}

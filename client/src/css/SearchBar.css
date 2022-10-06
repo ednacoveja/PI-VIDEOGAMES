@@ -8,7 +8,7 @@
     border-radius: 100px;
 
     color:white;
-    background-color: #EE9B00;
+    background-color: #00949e;
     font-size:1rem;
     font-weight:900;
 }
@@ -16,5 +16,5 @@
 .searchButton:hover{
     color:#023047;
     border-color:#023047;
-    background-color: #EE9B00;
+    background-color: #00949e;
 }

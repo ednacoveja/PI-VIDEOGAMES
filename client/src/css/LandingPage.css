@@ -1,13 +1,15 @@
 .all{
-    background-image: url(https://cdn.wallpapersafari.com/83/79/dVL8SI.png);
-    height: 40rem;
-    padding-top: 1rem;
-    padding-bottom: 2.4rem;
+    background-image: url(https://bolavip.com/__export/1588119326512/sites/bolavip/img/2020/04/28/videogamesmundial_crop1588119325937.jpg_497593902.jpg);
+
 }
 
-.title{
-    color:#dbac29;
+.letras{
+    color:#126268;
+    font-size: xx-large;
+    font-style: initial;
+    font-weight: 900;
 }
+
 
 .homeButton{
     height:10rem;
@@ -18,11 +20,11 @@
     background-color: #181203;
     font-size:3rem;
     font-weight:900;
-    margin-top: 21rem;
+    margin-top: 20rem;
 
 }
 .homeButton:hover{
-    color:#023047;
+    color:#126268;
     border-color:#023047;
-    background-color: #EE9B00;
+    background-color: #00949e;
 }

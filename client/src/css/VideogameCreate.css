@@ -5,7 +5,7 @@
     border-color: black;
     border-radius: 0.5rem;
 
-    background-color: rgba(231, 134, 44, 0.404);
+    background-color: rgba(255, 255, 255, 0.404);
 
     height: 100%;
     width: 40%;
@@ -21,6 +21,9 @@
     bottom: 7%;
     margin-top: 4%;
     
+}
+.titulo{
+    color:#126268;
 }
 
 
@@ -45,7 +48,7 @@
 
     border-radius: 100px;
     color:white;
-    background-color: #dbac29;
+    background-color: #00949e;
     font-size:2rem;
     font-weight:900;
 
@@ -53,13 +56,13 @@
 .buttonCreate:hover{
     color:#023047;
     border-color:#023047;
-    background-color: #EE9B00;
+    background-color: #00949e;
 }
 
 .buttonHome{
    
     color:white;
-    background-color:  #dbac29;
+    background-color:  #00949e;
     font-size:1rem;
     font-weight:900;
 
@@ -67,7 +70,7 @@
 .buttonHome:hover{
     color:#023047;
     border-color:#023047;
-    background-color: #EE9B00;
+    background-color: #00949e;
 }
 
 .input{
@@ -83,4 +86,18 @@
 .input:focus{
     border-color: rgb(15, 227, 255);
 
+}
+
+.error{
+    color:rgb(255, 102, 0);
+    font-size: medium;
+    font-weight:400;
+    margin-left:2px;
+}
+
+.warning{
+    color:rgb(255, 217, 0);
+    font-size: medium;
+    font-weight:400;
+    margin-left:2px;
 }

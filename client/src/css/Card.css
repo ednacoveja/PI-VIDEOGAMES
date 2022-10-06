@@ -1,5 +1,5 @@
 .card{
-    background-color: #EE9B00;
+    background-color: #00949e;
     height:20rem;
     width:15rem;
     border-radius: 10px;
@@ -17,7 +17,7 @@
 
 .card:hover{
     background-color: #023047;
-    color: #EE9B00;
+    color: #00949e;
 }
 
 .title{

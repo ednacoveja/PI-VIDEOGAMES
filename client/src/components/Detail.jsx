@@ -17,26 +17,38 @@ export default function Detail() {
     <div>
       <div className="alldetail">
         <h1 className="title">{videogameDetail.name}</h1>
-        <h3 className="alignPlatforms">
-          Platforms:
-          {id.includes("-")
-            ? videogameDetail.platforms &&
-              videogameDetail.platforms.map((p) => (
-                <ul key={p.name}>{p.name}</ul>
-              ))
-            : videogameDetail.platforms &&
-              videogameDetail.platforms.map((p) => <ul key={p}>{p}</ul>)}{" "}
-        </h3>
-        <h3 className="alignRating">Rating: {videogameDetail.rating}</h3>
-        <h3 className="alignReleased">Released: {videogameDetail.released}</h3>
-        <h3 className="alignGenre">
-          Genres:
-          {id.includes("-")
-            ? videogameDetail.genres &&
-              videogameDetail.genres.map((g) => <ul key={g.name}>{g.name}</ul>)
-            : videogameDetail.genres &&
-              videogameDetail.genres.map((g) => <ul key={g}>{g}</ul>)}{" "}
-        </h3>
+        <div className="divD">
+          <h3 className="alignPlatforms">Platforms:</h3>
+          <h4>
+            {id.includes("-")
+              ? videogameDetail.platforms &&
+                videogameDetail.platforms.map((p) => (
+                  <ul key={p.name}>{p.name}</ul>
+                ))
+              : videogameDetail.platforms &&
+                videogameDetail.platforms.map((p) => <ul key={p}>{p}</ul>)}
+          </h4>
+        </div>
+        <div className="divD">
+          <h3 className="alignRating">Rating: </h3>
+          <h4> {videogameDetail.rating}</h4>
+        </div>
+        <div className="divD">
+          <h3 className="alignReleased">Released: </h3>
+          <h4> {videogameDetail.released}</h4>
+        </div>
+        <div className="divD">
+          <h3 className="alignGenre">Genres: </h3>
+          <h4>
+            {id.includes("-")
+              ? videogameDetail.genres &&
+                videogameDetail.genres.map((g) => (
+                  <ul key={g.name}>{g.name}</ul>
+                ))
+              : videogameDetail.genres &&
+                videogameDetail.genres.map((g) => <ul key={g}>{g}</ul>)}{" "}
+          </h4>
+        </div>
       </div>
       <img
         className="img"
@@ -48,7 +60,7 @@ export default function Detail() {
       <br />
       <div className="alldetail">
         <h3 className="description">
-          Description:{videogameDetail.description}
+          Description: {videogameDetail.description}
         </h3>
       </div>
       <br />

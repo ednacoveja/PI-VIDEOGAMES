@@ -10,17 +10,22 @@
     border-radius: 100px;
 
     color:white;
-    background-color: #dbac29;
+    background-color: #126268;
     font-size:3rem;
     font-weight:900;
     margin-top: 30rem;
 
 
 }
+.divD{
+    display:flex;
+    flex-direction: row;
+    gap: 10px
+}
 .homeButtonD:hover{
     color:#023047;
     border-color:#023047;
-    background-color: #EE9B00;
+    background-color: #00949e;
 }
 
 .img{
@@ -36,23 +41,27 @@
     display:flex;
     justify-content:flex-start;
     margin-left:25rem;
+    color:#00949e
 }
 .alignReleased{
     display:flex;
     justify-content:flex-start;
     margin-left:25rem;
+    color:#00949e
 }
 
 .alignGenre{
     display:flex;
     justify-content:flex-start;
     margin-left:25rem;
+    color:#00949e
 }
 
 .alignPlatforms{
     display:flex;
     justify-content:flex-start;
     margin-left:25rem;
+    color:#00949e
 }
 
 .description{
@@ -63,6 +72,7 @@
     padding: 1rem;
     margin-left: 3rem;
     margin-right: 3rem;
+
 }
 
 .unorderList{

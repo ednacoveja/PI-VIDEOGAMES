@@ -145,10 +145,10 @@ export default function rootReducer(state = intitalState, action) {
         ...state,
         allPlatforms: action.payload,
       };
-    /*case 'POST_VIDEOGAME':
-          return {
-              ...state,
-          }*/
+    case "POST_VIDEOGAME":
+      return {
+        ...state,
+      };
 
     default:
       return state;

@@ -39,7 +39,7 @@ const getVideogames = async (req, res) => {
       if (buscar.length) {
         res.status(200).send(buscar);
       } else {
-        res.status(404).send("no se encontro el videogame con ese nombre");
+        res.status(404).send("videogame not found");
       }
     }
   } catch (error) {
@@ -74,7 +74,8 @@ const getVideogamesID = async (req, res) => {
       res.status(200).send(videogameAPI);
     }
   } catch (error) {
-    res.status(404).send(error);
+    res.status(404).send("not found");
+    console.log(error)
   }
 };
 
@@ -109,6 +110,7 @@ const postVideogame = async (req, res) => {
     res.status(200).send(createVG);
   } catch (err) {
     res.status(400).send(err);
+    console.log(err)
   }
 };
 

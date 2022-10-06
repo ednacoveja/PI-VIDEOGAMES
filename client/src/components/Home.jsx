@@ -134,10 +134,10 @@ export default function Home() {
                   key={v.id}
                   background_image={v.background_image}
                   rating={v.rating}
-                  genres={
+                  platforms={
                     !v.createdInDb
-                      ? v.genres.toString()
-                      : v.genres.map((vg) => vg.name + ",")
+                      ? v.platforms.toString()
+                      : v.platforms.map((vg) => vg.name + ",")
                   }
                 />
               </div>

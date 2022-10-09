@@ -31,8 +31,8 @@ export default function Filters() {
     <div className="filters">
       <select className="showSelector" onChange={(e) => handlerFilterCreate(e)}>
         <option value="all">ALL</option>
-        <option value="api">EXISTENTES</option>
-        <option value="db">CREADOS</option>
+        <option value="api">Existing</option>
+        <option value="db">Created</option>
       </select>
 
       <select className="showSelector" onChange={(e) => handlerFilterGenres(e)}>
@@ -57,8 +57,8 @@ export default function Filters() {
         </option>
         {platforms &&
           platforms.map((p) => (
-            <option value={p.name} key={p.id}>
-              {p.name}
+            <option value={p} key={p}>
+              {p}
             </option>
           ))}
       </select>

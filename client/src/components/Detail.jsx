@@ -20,13 +20,10 @@ export default function Detail() {
         <div className="divD">
           <h3 className="alignPlatforms">Platforms:</h3>
           <h4>
-            {id.includes("-")
-              ? videogameDetail.platforms &&
-                videogameDetail.platforms.map((p) => (
-                  <ul key={p.name}>{p.name}</ul>
-                ))
-              : videogameDetail.platforms &&
-                videogameDetail.platforms.map((p) => <ul key={p}>{p}</ul>)}
+            {videogameDetail.platforms &&
+              videogameDetail.platforms.map((p) => (
+                <ul key={p}>{p}</ul>
+              ))}
           </h4>
         </div>
         <div className="divD">

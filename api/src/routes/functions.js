@@ -1,25 +1,30 @@
-const { Videogame, Genre, Platform } = require("../db");
-const { API_KEY } = process.env;
-const axios = require("axios");
+const { Videogame, Genre } = require("../db");
 const {
   genresInDB,
   allVideogames,
   idVideogameAPI,
-  platformsInDB,
+  platformsBuscar,
 } = require("./allVG,P&G");
 
 const getGenresDB = async (req, res) => {
   try {
-    const getGenres = await genresInDB();
-    res.status(200).send(getGenres);
+    const genres = await genresInDB();
+    res.status(200).send(genres);
   } catch (error) {
     res.status(404).send(error);
   }
 };
-
-const getPlatformsDB = async (req, res) => {
+const getPlatforms = async (req, res) => {
   try {
-    const platforms = await platformsInDB();
+    const allPlatforms = await platformsBuscar();
+    const platforms = [];
+    allPlatforms &&
+      allPlatforms.forEach((a) => {
+        a.map((p) => {
+          if (!platforms.includes(p)) platforms.push(p);
+        });
+      });
+
     res.status(200).send(platforms);
   } catch (error) {
     res.status(404).send(error);
@@ -58,11 +63,7 @@ const getVideogamesID = async (req, res) => {
           attributes: ["name"],
           through: { attributes: [] },
         },
-        include: {
-          model: Platform,
-          attributes: ["name"],
-          through: { attributes: [] },
-        },
+
         where: {
           id: idVideogame,
         },
@@ -75,7 +76,7 @@ const getVideogamesID = async (req, res) => {
     }
   } catch (error) {
     res.status(404).send("not found");
-    console.log(error)
+    console.log(error);
   }
 };
 
@@ -95,6 +96,7 @@ const postVideogame = async (req, res) => {
       description,
       released,
       rating: parseFloat(rating),
+      platforms,
       background_image:
         background_image ||
         "https://www.narbis.com/wp-content/uploads/2021/01/GAME.jpg",
@@ -102,15 +104,14 @@ const postVideogame = async (req, res) => {
     let buscarGenres = await Genre.findAll({
       where: { name: genres },
     });
-    let buscarPlatforms = await Platform.findAll({
-      where: { name: platforms },
-    });
+
     createVG.addGenre(buscarGenres);
-    createVG.addPlatform(buscarPlatforms);
+
     res.status(200).send(createVG);
+    console.log(createVG);
   } catch (err) {
     res.status(400).send(err);
-    console.log(err)
+    console.log(err);
   }
 };
 
@@ -139,5 +140,5 @@ module.exports = {
   getVideogamesID,
   postVideogame,
   deleteId,
-  getPlatformsDB,
+  getPlatforms,
 };

@@ -7,6 +7,7 @@ const videogames = require("./videogames");
 const genres = require("./genres");
 const platforms = require("./platforms");
 
+
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 

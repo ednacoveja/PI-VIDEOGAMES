@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Videogame, Genre, Platform } = require("../db.js");
+const { Videogame, Genre } = require("../db.js");
 const { API_KEY } = process.env;
 
 async function genresInDB() {
@@ -16,18 +16,24 @@ async function genresInDB() {
   return genresDB;
 }
 
-async function platformsInDB() {
-    const infoGET = await axios.get(`http://localhost:3001/videogames`);
-    const array_platforms = infoGET.data.map((v) => v.platforms);
-    const platforms = array_platforms.toString().split(",");
-   platforms.forEach((p) => {
-      Platform.findOrCreate({
-        //findOrCreate busca si esta entidad ya esta creada en el modelo y no hace nada, de lo contrario la crea
-        where: { name: p }, 
+async function platformsBuscar() {
+  let allPlatforms = [];
+  let url = `https://api.rawg.io/api/games?key=${API_KEY}`;
+  try {
+    for (let i = 0; i < 5; i++) {
+      let pages = await axios.get(url);
+      pages.data.results.map((e) => {
+        allPlatforms.push({
+          platforms: e.platforms.map((e) => e.platform.name),
+        });
       });
-    });
-    const allPlatforms = await Platform.findAll();
-    return allPlatforms
+      url = pages.data.next;
+    }
+    const arraydearrays=allPlatforms.map(o=>o.platforms)
+    return arraydearrays
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 async function videogamesAPI() {
@@ -59,11 +65,6 @@ async function videogamesInDB() {
   const videogamesDB = await Videogame.findAll({
     include: {
       model: Genre,
-      attributes: ["name"],
-      through: { attributes: [] },
-    },
-    include: {
-      model: Platform,
       attributes: ["name"],
       through: { attributes: [] },
     },
@@ -106,4 +107,4 @@ async function idVideogameAPI(idVideogame) {
   return result;
 }
 
-module.exports = { genresInDB, allVideogames, idVideogameAPI, platformsInDB };
+module.exports = { genresInDB, allVideogames, idVideogameAPI, platformsBuscar };

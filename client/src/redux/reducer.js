@@ -58,24 +58,13 @@ export default function rootReducer(state = intitalState, action) {
 
     case "FILTER_PLATFORMS":
       const vGames = state.videogames;
-      const filtApi = vGames.filter((v) => !v.createdInDb);
-      const platformsApi = filtApi.filter((v) =>
+      const platformsFilter = vGames.filter((v) =>
         v.platforms.includes(action.payload)
       );
-      const filtDb = vGames.filter((v) => v.createdInDb);
-      const platformsDb = filtDb.filter((v) => {
-        for (let i = 0; i < v.platforms.length; i++) {
-          if (v.platforms[i].name === action.payload) {
-            return v;
-          }
-        }
-      });
-      //        v.genres.map((g) => g.name.includes(action.payload))
-      const resultado = platformsApi.concat(platformsDb);
 
       return {
         ...state,
-        videogames: [...resultado],
+        videogames: [...platformsFilter],
       };
 
     case "ORDER_ALPH":

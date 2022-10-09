@@ -1,9 +1,9 @@
 const { Router } = require('express');
-const { getPlatformsDB}=require("./functions")
+const {getPlatforms}=require("./functions")
 
 const router=Router()
 
-router.get("/", getPlatformsDB)
+router.get("/",getPlatforms)
 
 
 module.exports=router

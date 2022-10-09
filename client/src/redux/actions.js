@@ -31,7 +31,7 @@ export function getNameVideogame(name) {
     } catch (error) {
       //alert("Juego No Encontrado");
       console.log(error);
-      alert(error.response.data);//viene del back
+      alert(error.response.data); //viene del back
     }
   };
 }
@@ -51,7 +51,6 @@ export function getNameVideogame(name) {
       });
   };
 }*/
-
 
 export function filterByCreate(value) {
   return {
@@ -121,7 +120,10 @@ export function postVideogame(payload) {
   return async function (dispatch) {
     try {
       let json = await axios.post("http://localhost:3001/videogames", payload);
-      return json;
+      return dispatch({
+        type: "POST_VIDEOGAME",
+        payload: json,
+      });
     } catch (error) {
       alert(error);
     }

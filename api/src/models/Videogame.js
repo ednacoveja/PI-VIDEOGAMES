@@ -13,7 +13,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       unique: true,
       allowNull: false,
-      
     },
     description: {
       type: DataTypes.TEXT,
@@ -31,6 +30,9 @@ module.exports = (sequelize) => {
       isDecimal: true,
     },
 
+    platforms: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+    },
 
     createdInDb: {
       type: DataTypes.BOOLEAN,

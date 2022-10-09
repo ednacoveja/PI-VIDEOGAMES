@@ -10,10 +10,13 @@ function validate(form) {
   let errors = {};
   if (!form.name) {
     errors.name = "Name required.";
+  } else if (form.name.length > 17 || form.name.length < 3) {
+    errors.name = "Must be between 3 and 17 characters long";
   }
   if (!form.released) {
     errors.released = "Date released required.";
   }
+
   if (!form.rating) {
     errors.rating = "Rating required.";
   } else if (form.rating > 5 || form.rating < 1) {
@@ -27,6 +30,8 @@ function validate(form) {
   }
   if (!form.description) {
     errors.description = "Description required.";
+  } else if (form.description.length > 150 || form.description.length < 3) {
+    errors.description = "Must be between 3 and 150 characters long";
   }
   return errors;
 }
@@ -38,8 +43,13 @@ function VideogameCreate() {
     dispatch(getPlatforms(), getGenres());
   }, [dispatch]);
 
+  useEffect(() => {
+    setErrors(validate(input));
+  }, []);
+
   const platforms = useSelector((state) => state.allPlatforms);
   const allgenres = useSelector((state) => state.genres);
+
   const [errors, setErrors] = useState({});
 
   const [input, setInput] = useState({
@@ -70,12 +80,24 @@ function VideogameCreate() {
       ...input,
       genres: [...input.genres, e.target.value],
     });
+    setErrors(
+      validate({
+        ...input,
+        genres: [...input.genres, e.target.value],
+      })
+    );
   };
   const handlerSelectPlatforms = (e) => {
     setInput({
       ...input,
       platforms: [...input.platforms, e.target.value],
     });
+    setErrors(
+      validate({
+        ...input,
+        platforms: [...input.platforms, e.target.value],
+      })
+    );
   };
   const handlerDeleteGenres = (e) => {
     setInput({
@@ -201,6 +223,7 @@ function VideogameCreate() {
                   </option>
                 ))}
             </select>
+            {errors.genres && <p className="error">{errors.genres}</p>}
             <ul>
               <li>
                 {input.genres.map((g) => (
@@ -230,11 +253,12 @@ function VideogameCreate() {
               </option>
               {platforms &&
                 platforms.map((p) => (
-                  <option className="option" value={p.name}>
-                    {p.name}
+                  <option className="option" value={p}>
+                    {p}
                   </option>
                 ))}
             </select>
+            {errors.platforms && <p className="error">{errors.platforms}</p>}
             <ul>
               <li>
                 {input.platforms.map((p) => (
@@ -250,11 +274,12 @@ function VideogameCreate() {
                 ))}
               </li>
             </ul>
+
             <br />
 
             <br />
             <button
-              //disabled={hasOwnProperty(errors)}
+              //disabled={Object.keys(errors).length !== 0}
               className="buttonCreate"
               type="submit"
               onClick={(e) => handlerSubmit(e)}

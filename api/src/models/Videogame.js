@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     background_image: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
 
     rating: {

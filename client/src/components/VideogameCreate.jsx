@@ -4,39 +4,47 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import "../css/VideogameCreate.css";
-import { getGenres, getPlatforms, postVideogame } from "../redux/actions";
+import { getGenres, getPlatforms, postVideogame, getVideogames} from "../redux/actions";
 
-function validate(form) {
-  let errors = {};
-  if (!form.name) {
-    errors.name = "Name required.";
-  } else if (form.name.length > 17 || form.name.length < 3) {
-    errors.name = "Must be between 3 and 17 characters long";
-  }
-  if (!form.released) {
-    errors.released = "Date released required.";
-  }
 
-  if (!form.rating) {
-    errors.rating = "Rating required.";
-  } else if (form.rating > 5 || form.rating < 1) {
-    errors.rating = "It has to be a number between 1 and 5";
-  }
-  if (!form.genres.length) {
-    errors.genres = "A genre is required.";
-  }
-  if (!form.platforms.length) {
-    errors.platforms = "A platform is required.";
-  }
-  if (!form.description) {
-    errors.description = "Description required.";
-  } else if (form.description.length > 150 || form.description.length < 3) {
-    errors.description = "Must be between 3 and 150 characters long";
-  }
-  return errors;
-}
 
 function VideogameCreate() {
+  function validate(form) {
+  
+    let errors = {};
+    
+    if (!form.name) {
+      errors.name = "Name required.";
+    } else if (form.name.length > 17 || form.name.length < 3) {
+      errors.name = "Must be between 3 and 17 characters long";
+    } else if (
+      videogames.find((v) => v.name.toLowerCase() === form.name.toLowerCase())
+    )
+      errors.name = "That videogame already exists";
+    if (!form.released) {
+      errors.released = "Date released required.";
+    }
+  
+    if (!form.rating) {
+      errors.rating = "Rating required.";
+    } else if (form.rating > 5 || form.rating < 1) {
+      errors.rating = "It has to be a number between 1 and 5";
+    }
+    if (!form.genres.length) {
+      errors.genres = "A genre is required.";
+    }
+    if (!form.platforms.length) {
+      errors.platforms = "A platform is required.";
+    }
+    if (!form.description) {
+      errors.description = "Description required.";
+    } else if (form.description.length > 6500 || form.description.length < 3) {
+      errors.description = "Must be between 3 and 6500 characters long";
+    }
+    return errors;
+  }
+
+
   const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -49,6 +57,8 @@ function VideogameCreate() {
 
   const platforms = useSelector((state) => state.allPlatforms);
   const allgenres = useSelector((state) => state.genres);
+  const videogames = useSelector((state) => state.allVideogames)
+  
 
   const [errors, setErrors] = useState({});
 
@@ -57,7 +67,7 @@ function VideogameCreate() {
     description: "",
     released: "",
     rating: "",
-    image: "",
+    background_image: "",
     genres: [],
     platforms: [],
   });
@@ -67,6 +77,7 @@ function VideogameCreate() {
       ...input,
       [e.target.name]: e.target.value,
     });
+    console.log(input);
     setErrors(
       validate({
         ...input,
@@ -122,10 +133,11 @@ function VideogameCreate() {
         description: "",
         released: "",
         rating: "",
-        image: "",
+        background_image: "",
         genres: [],
         platforms: [],
       });
+
       history.push("/home");
     } else {
       alert("YOU MUST MEET THE MINIMUM REQUIREMENTS");
@@ -136,7 +148,6 @@ function VideogameCreate() {
     <div>
       <div className="form">
         <br />
-
         <Link to="/home">
           <button className="buttonHome">Return HOME</button>
         </Link>
@@ -193,13 +204,13 @@ function VideogameCreate() {
             <br />
             <label className="label">Image:</label>
             <input
-              type="text"
-              name="image"
               className="input"
-              value={input.image}
+              type="text"
+              name="background_image"
+              value={input.background_image}
               onChange={(e) => handlerChange(e)}
             />
-            {!input.image && (
+            {!input.background_image && (
               <p className="warning">
                 "WARNING: if you don't put a URL, will be used an alternative."
               </p>
@@ -243,7 +254,7 @@ function VideogameCreate() {
             <br />
             <label className="label">Platforms:</label>
             <select
-              disabled={input.platforms.length > 3}
+              disabled={input.platforms.length > 4}
               className="input"
               name="platforms"
               onChange={(e) => handlerSelectPlatforms(e)}

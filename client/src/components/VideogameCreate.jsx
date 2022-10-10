@@ -4,15 +4,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import "../css/VideogameCreate.css";
-import { getGenres, getPlatforms, postVideogame, getVideogames} from "../redux/actions";
-
-
+import { getGenres, getPlatforms, postVideogame } from "../redux/actions";
 
 function VideogameCreate() {
   function validate(form) {
-  
     let errors = {};
-    
+
     if (!form.name) {
       errors.name = "Name required.";
     } else if (form.name.length > 17 || form.name.length < 3) {
@@ -24,7 +21,7 @@ function VideogameCreate() {
     if (!form.released) {
       errors.released = "Date released required.";
     }
-  
+
     if (!form.rating) {
       errors.rating = "Rating required.";
     } else if (form.rating > 5 || form.rating < 1) {
@@ -44,21 +41,11 @@ function VideogameCreate() {
     return errors;
   }
 
-
   const history = useHistory();
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getPlatforms(), getGenres());
-  }, [dispatch]);
-
-  useEffect(() => {
-    setErrors(validate(input));
-  }, []);
 
   const platforms = useSelector((state) => state.allPlatforms);
   const allgenres = useSelector((state) => state.genres);
-  const videogames = useSelector((state) => state.allVideogames)
-  
+  const videogames = useSelector((state) => state.allVideogames);
 
   const [errors, setErrors] = useState({});
 
@@ -71,6 +58,15 @@ function VideogameCreate() {
     genres: [],
     platforms: [],
   });
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getPlatforms(), getGenres());
+  }, [dispatch]);
+
+  useEffect(() => {
+    setErrors(validate(input));
+  }, [input]);
 
   const handlerChange = (e) => {
     setInput({

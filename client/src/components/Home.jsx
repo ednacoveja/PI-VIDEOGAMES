@@ -12,7 +12,7 @@ import {
   getGenres,
   orderAlph,
   orderRating,
-  getPlatforms
+  getPlatforms,
 } from "../redux/actions";
 
 export default function Home() {
@@ -22,7 +22,7 @@ export default function Home() {
   useEffect(() => {
     dispatch(getVideogames());
     dispatch(getGenres());
-    dispatch(getPlatforms())
+    dispatch(getPlatforms());
   }, [dispatch]);
 
   function handlerReload(e) {
@@ -42,8 +42,8 @@ export default function Home() {
   };
 
   //filtros y ordenamientos
-  const [order, setOrder] = useState("");
-  const [rating, setRating] = useState("");
+  const [setOrder] = useState("");
+  const [setRating] = useState("");
 
   function handlerOrderAlph(e) {
     e.preventDefault();

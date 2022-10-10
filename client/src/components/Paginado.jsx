@@ -1,8 +1,9 @@
-import React from "react";
-import "../css/Paginado.css"
-
+import React, { useState } from "react";
+import "../css/Paginado.css";
 
 export default function Paginado({ gamesPerPage, allVideogames, paginado }) {
+  
+  const [currentCss, setCurrentCss] = useState(1);
 
   const PageNumbers = [];
   for (let i = 1; i <= Math.ceil(allVideogames / gamesPerPage); i++) {
@@ -13,10 +14,16 @@ export default function Paginado({ gamesPerPage, allVideogames, paginado }) {
     <nav className="pag-nav">
       <ul className="ul">
         {PageNumbers?.map((number) => (
-              <button className="button"
-              key={number} onClick={() => paginado(number)}>
-              {number}
-            </button>
+          <button
+            className={`button ${currentCss === number && "currentNumber"}`}
+            key={number}
+            onClick={() => {
+              paginado(number) 
+              setCurrentCss(number)
+            }}
+          >
+            {number}
+          </button>
         ))}
       </ul>
     </nav>

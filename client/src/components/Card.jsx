@@ -13,7 +13,7 @@ export default function Card({ id, name, background_image, genres, rating }) {
       <img
         className="image"
         src={background_image}
-        /*alt="https://th.bing.com/th/id/R.9d27c7f3b4b65d63797f3422e4536313?rik=0Dq86MJWuO98lw&pid=ImgRaw&r=0"*/
+        alt="https://th.bing.com/th/id/R.9d27c7f3b4b65d63797f3422e4536313?rik=0Dq86MJWuO98lw&pid=ImgRaw&r=0"
         width="200px"
         height="230px"
       />

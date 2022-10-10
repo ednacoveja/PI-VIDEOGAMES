@@ -1,0 +1,22 @@
+.img404{
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    background-image: url(https://2.bp.blogspot.com/-VVE1b6El-ls/VkB8uXFeKjI/AAAAAAAAHTA/gT1FJrLb24U/s1600/broken%2Blinks.png);
+ 
+    object-fit: cover;
+}
+
+.home404{
+ 
+    color:white;
+    background-color: #2592da;
+    font-size:3rem;
+    font-weight:90;
+    margin-top: 44%;
+
+}
+.home404:hover{
+    color:#626566;
+    
+}

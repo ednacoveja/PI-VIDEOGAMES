@@ -4,6 +4,7 @@ import LandingPage from "./components/LandingPage";
 import Home from "./components/Home";
 import Detail from "./components/Detail";
 import VideogameCreate from "./components/VideogameCreate";
+import PageNotFound from "./components/PageNotFound"
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/home" component={Home} />
           <Route path="/videogames" component={VideogameCreate} />
           <Route path="/videogame/:id" component={Detail} />
+          <Route path="*" component={PageNotFound} />
         </Switch>
       </div>
     </BrowserRouter>

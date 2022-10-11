@@ -48,7 +48,7 @@ export default function rootReducer(state = intitalState, action) {
           }
         }
       });
-      //        v.genres.map((g) => g.name.includes(action.payload))
+     
       const result = genresApi.concat(genresDb);
 
       return {

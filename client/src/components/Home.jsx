@@ -13,11 +13,14 @@ import {
   orderAlph,
   orderRating,
   getPlatforms,
+  filterByPlatforms,
+  filterByGenres,
 } from "../redux/actions";
 
 export default function Home() {
   const dispatch = useDispatch();
   const allVideogames = useSelector((state) => state.videogames);
+
 
   useEffect(() => {
     dispatch(getVideogames());
@@ -28,6 +31,8 @@ export default function Home() {
   function handlerReload(e) {
     e.preventDefault();
     dispatch(getVideogames());
+    dispatch(filterByGenres())
+    dispatch(filterByPlatforms())
   }
 
   //paginado

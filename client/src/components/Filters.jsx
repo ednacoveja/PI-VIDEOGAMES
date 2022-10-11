@@ -27,6 +27,7 @@ export default function Filters() {
     e.preventDefault();
     dispatch(filterByPlatforms(e.target.value));
   }
+
   return (
     <div className="filters">
       <select className="showSelector" onChange={(e) => handlerFilterCreate(e)}>

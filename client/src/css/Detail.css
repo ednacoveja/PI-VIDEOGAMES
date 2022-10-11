@@ -14,18 +14,18 @@
     font-size:3rem;
     font-weight:900;
     margin-top: 30rem;
-
-
 }
-.divD{
-    display:flex;
-    flex-direction: row;
-    gap: 10px
-}
+
 .homeButtonD:hover{
     color:#023047;
     border-color:#023047;
     background-color: #00949e;
+}
+
+.divD{
+    display:flex;
+    flex-direction: row;
+    gap: 10px
 }
 
 .img{
@@ -73,15 +73,4 @@
     margin-left: 3rem;
     margin-right: 3rem;
 
-}
-
-.unorderList{
-    display: flex;
-    flex-direction: row;
-    justify-content:center;
-}
-
-.item{
-    margin-left: 2rem;
-    list-style: none;
 }

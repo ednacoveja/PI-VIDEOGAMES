@@ -50,47 +50,6 @@ html{
     background-color: #00949e;
 }
 
-.viewGenresButton{
-    height:2.5rem;
-    border-radius: 10px;
-
-    color:white;
-    background-color: #00949e;
-    font-size:1rem;
-    font-weight:900;
-}
-
-.viewGenresButton:hover{
-    color:#023047;
-    border-color:#023047;
-    background-color: #00949e;
-}
-
-
-.showSelector{
-    height:2.5rem;
-    border-radius: 10px;
-
-    color:white;
-    background-color: #00949e;
-    font-size:1rem;
-    font-weight:900;
-    margin-left: 1rem;
-    margin-right: 1rem;
-}
-
-.genreSelector{
-    height:2.5rem;
-    border-radius: 10px;
-
-    color:white;
-    background-color: #00949e;
-    font-size:1rem;
-    font-weight:900;
-    margin-left: 1rem;
-    margin-right: 1rem;
-}
-
 .orderSelector{
     height:2.5rem;
     border-radius: 10px;
@@ -111,40 +70,4 @@ html{
 .cards{
     display:grid;
     grid-template-columns: repeat(3, 1fr);
-}
-
-
-.notFounded{
-    color:#00949e;
-}
-
-
-.contactBox{
-    margin: none;
-}
-
-.contact{
-    text-decoration: none;
-    list-style:none;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;    
-}
-
-.itemContact{
-    font-size:1.5rem;
-    margin: 1rem;
-    color:#00949e;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-    width: 2rem;
-    height: 2rem;
-}
-
-.itemContact:hover{
-    color: #023047;
-    background-color: white;
-    border-radius: 100px;
 }

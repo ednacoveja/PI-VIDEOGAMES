@@ -38,6 +38,13 @@ function VideogameCreate() {
     } else if (form.description.length > 6500 || form.description.length < 3) {
       errors.description = "Must be between 3 and 6500 characters long";
     }
+    if (form.background_image) {
+      const expReg = new RegExp("https?://.*.(?:png|jpg)");
+      if (!expReg.test(form.background_image)) {
+        errors.background_image = "Does not match an image url";
+      }
+    }
+
     return errors;
   }
 
@@ -210,6 +217,9 @@ function VideogameCreate() {
               <p className="warning">
                 "WARNING: if you don't put a URL, will be used an alternative."
               </p>
+            )}
+            {errors.background_image && (
+              <p className="error">{errors.background_image}</p>
             )}
             <br />
             <br />

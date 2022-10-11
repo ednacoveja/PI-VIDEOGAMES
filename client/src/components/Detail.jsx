@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import { getDetail, clearDetail } from "../redux/actions";
+import { Link, useHistory, useParams } from "react-router-dom";
+import { getDetail, clearDetail, deleteVideogame } from "../redux/actions";
 import "../css/Detail.css";
 
 export default function Detail() {
@@ -13,17 +13,40 @@ export default function Detail() {
   }, [dispatch, id]);
   const videogameDetail = useSelector((state) => state.detail);
 
+  const history = useHistory();
+
+  function ConfirmAlert() {
+    //Ingresamos un mensaje a mostrar
+    var mensaje = window.confirm(
+      "Are you sure you want to delete this videogame?"
+    );
+    //Detectamos si el usuario acepto el mensaje
+    if (mensaje) {
+      alert("deleted videogame");
+      dispatch(deleteVideogame(id));
+      history.push("/home");
+    }
+  }
+
+  function handlerDelete(e) {
+    e.preventDefault(e);
+    ConfirmAlert();
+  }
+
   return (
     <div>
       <div className="alldetail">
+        <br />
+        {id.includes("-") && (
+          <button onClick={(e) => handlerDelete(e)}>DELETE VIDEOGAME</button>
+        )}
+
         <h1 className="title">{videogameDetail.name}</h1>
         <div className="divD">
           <h3 className="alignPlatforms">Platforms:</h3>
           <h4>
             {videogameDetail.platforms &&
-              videogameDetail.platforms.map((p) => (
-                <ul key={p}>{p}</ul>
-              ))}
+              videogameDetail.platforms.map((p) => <ul key={p}>{p}</ul>)}
           </h4>
         </div>
         <div className="divD">

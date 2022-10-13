@@ -107,7 +107,8 @@ const postVideogame = async (req, res) => {
 
     createVG.addGenre(buscarGenres);
 
-    res.status(200).send(createVG);
+    res.status(200).send("Videogame Created!");
+
     console.log(createVG);
   } catch (err) {
     res.status(400).send(err);
@@ -125,12 +126,46 @@ const deleteId = async (req, res) => {
           id: idVideogameDelete,
         },
       });
-      res.status(200).send("eliminado exitosamente");
+      res.status(200).send("Successfully Deleted");
     } else {
       res.status(404).send("no existe ese id o ya fue eliminado");
     }
   } catch (error) {
     res.status(404).send(error + " no se puede borrar ese videogame");
+  }
+};
+
+const putVideogame = async (req, res) => {
+  try {
+    const {nameParams}=req.params
+    const updateVG = await Videogame.findOne({ where: { name: nameParams } });
+    let {
+      name,
+      description,
+      released,
+      background_image,
+      platforms,
+      genres,
+      rating,
+    } = req.body;
+     updateVG = await Videogame.update({
+      name,
+      description,
+      released,
+      rating: parseFloat(rating),
+      platforms,
+      background_image,
+    });
+    let genresIndb = await Genre.findAll({
+      where: { name: genres },
+    });
+
+    updateVG.addGenre(genresIndb);
+
+    res.status(200).send("Successfully updated videogame");
+
+  } catch (error) {
+    res.status(404).send(error + " no se pudo modificar el videogame");
   }
 };
 
@@ -141,4 +176,5 @@ module.exports = {
   postVideogame,
   deleteId,
   getPlatforms,
+  putVideogame,
 };

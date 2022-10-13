@@ -135,10 +135,12 @@ export default function rootReducer(state = intitalState, action) {
         allPlatforms: action.payload,
       };
     case "POST_VIDEOGAME":
+      alert(action.payload.data)
       return {
         ...state,
       };
     case "DELETE_VIDEOGAME":
+      alert(action.payload.data)
       return{
         ...state,
       }

@@ -22,8 +22,9 @@ export default function Detail() {
     );
     //Detectamos si el usuario acepto el mensaje
     if (mensaje) {
-      alert("deleted videogame");
+    
       dispatch(deleteVideogame(id));
+      
       history.push("/home");
     }
   }

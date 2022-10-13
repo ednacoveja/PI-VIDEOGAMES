@@ -130,7 +130,7 @@ function VideogameCreate() {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
       dispatch(postVideogame(input));
-      alert("Videogame Created!");
+      //alert("Videogame Created!");
       setInput({
         name: "",
         description: "",

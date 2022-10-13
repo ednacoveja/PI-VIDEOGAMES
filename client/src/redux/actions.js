@@ -29,7 +29,6 @@ export function getNameVideogame(name) {
         payload: json.data,
       });
     } catch (error) {
-      //alert("Juego No Encontrado");
       console.log(error);
       alert(error.response.data); //viene del back
     }

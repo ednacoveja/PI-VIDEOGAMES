@@ -80,14 +80,12 @@ function VideogameCreate() {
       ...input,
       [e.target.name]: e.target.value,
     });
-    console.log(input);
     setErrors(
       validate({
         ...input,
         [e.target.name]: e.target.value,
       })
     );
-    console.log(input);
   };
   const handlerSelectGenres = (e) => {
     setInput({
@@ -301,7 +299,6 @@ function VideogameCreate() {
               type="submit"
               onClick={(e) => handlerSubmit(e)}
             >
-              {console.log(errors)}
               CREATE
             </button>
             <br />

@@ -11,6 +11,6 @@ router.post("/", postVideogame)
 
 router.delete("/:idVideogameDelete",deleteId)
 
-router.put("/:name",putVideogame)
+router.put("/:idParams",putVideogame)
 
 module.exports = router;

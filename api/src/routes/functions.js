@@ -137,8 +137,8 @@ const deleteId = async (req, res) => {
 
 const putVideogame = async (req, res) => {
   try {
-    const {nameParams}=req.params
-    const updateVG = await Videogame.findOne({ where: { name: nameParams } });
+    const { idParams } = req.params;
+    const updateVG = await Videogame.findOne({ where: { id: idParams } });
     let {
       name,
       description,
@@ -148,11 +148,11 @@ const putVideogame = async (req, res) => {
       genres,
       rating,
     } = req.body;
-     updateVG = await Videogame.update({
+    await updateVG.update({
       name,
       description,
       released,
-      rating: parseFloat(rating),
+      rating,
       platforms,
       background_image,
     });
@@ -160,10 +160,9 @@ const putVideogame = async (req, res) => {
       where: { name: genres },
     });
 
-    updateVG.addGenre(genresIndb);
+    await updateVG.addGenre(genresIndb); //?:setGenres
 
     res.status(200).send("Successfully updated videogame");
-
   } catch (error) {
     res.status(404).send(error + " no se pudo modificar el videogame");
   }

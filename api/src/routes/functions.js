@@ -168,6 +168,17 @@ const putVideogame = async (req, res) => {
   }
 };
 
+/*{
+  const { id } = req.params;
+  const datos = req.body;
+  try {
+    Videogame.update(datos, { where: { id } });
+    return res.send("change Successfully");
+  } catch (err) {
+    res.status(400).send(err);
+  }
+}*/
+
 module.exports = {
   getGenresDB,
   getVideogames,

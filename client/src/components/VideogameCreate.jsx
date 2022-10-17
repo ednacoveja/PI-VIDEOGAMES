@@ -291,10 +291,9 @@ function VideogameCreate() {
             </ul>
 
             <br />
-
             <br />
             <button
-              //disabled={Object.keys(errors).length !== 0}
+              //disabled={Object.keys(errors).length > 0}
               className="buttonCreate"
               type="submit"
               onClick={(e) => handlerSubmit(e)}

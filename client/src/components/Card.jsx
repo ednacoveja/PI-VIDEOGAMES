@@ -2,13 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../css/Card.css";
 
-export default function Card({ id, name, background_image, genres, rating }) {
+export default function Card({
+  id,
+  name,
+  background_image,
+  genres,
+  rating,
+
+}) {
   return (
     <div className="card">
       <h1 className="title">
         <Link to={"/videogame/" + id}>{name}</Link>
       </h1>
+
       <h3>rating: {rating}</h3>
+
       <h3>genres: {genres}</h3>
       <img
         className="image"

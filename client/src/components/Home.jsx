@@ -21,7 +21,6 @@ export default function Home() {
   const dispatch = useDispatch();
   const allVideogames = useSelector((state) => state.videogames);
 
-
   useEffect(() => {
     dispatch(getVideogames());
     dispatch(getGenres());
@@ -31,8 +30,8 @@ export default function Home() {
   function handlerReload(e) {
     e.preventDefault();
     dispatch(getVideogames());
-    dispatch(filterByGenres())
-    dispatch(filterByPlatforms())
+    dispatch(filterByGenres());
+    dispatch(filterByPlatforms());
   }
 
   //paginado
@@ -47,8 +46,8 @@ export default function Home() {
   };
 
   //filtros y ordenamientos
-  const [setOrder] = useState("");
-  const [setRating] = useState("");
+  const [order, setOrder] = useState("");
+  const [rating, setRating] = useState("");
 
   function handlerOrderAlph(e) {
     e.preventDefault();

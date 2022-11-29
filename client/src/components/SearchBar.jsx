@@ -21,7 +21,7 @@ export default function SearchBar({setCurrentPage}) {
       dispatch(getNameVideogame(name));
       setName("");
     }
-    setCurrentPage(1)
+    //setCurrentPage(1)
   }
 
   return (

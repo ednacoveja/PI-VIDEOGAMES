@@ -4,6 +4,7 @@ let intitalState = {
   genres: [],
   detail: [],
   allPlatforms: [],
+  mantenerFiltros: [],
 };
 
 export default function rootReducer(state = intitalState, action) {
@@ -11,7 +12,8 @@ export default function rootReducer(state = intitalState, action) {
     case "GET_VIDEOGAMES":
       return {
         ...state,
-        videogames: action.payload,
+        videogames:
+          state.videogames.length === 0 ? action.payload : state.videogames,
         allVideogames: action.payload,
       };
     case "GET_GENRES":
@@ -48,12 +50,13 @@ export default function rootReducer(state = intitalState, action) {
           }
         }
       });
-     
+
       const result = genresApi.concat(genresDb);
 
       return {
         ...state,
         videogames: [...result],
+        mantenerFiltros: [...result],
       };
 
     case "FILTER_PLATFORMS":
@@ -65,6 +68,7 @@ export default function rootReducer(state = intitalState, action) {
       return {
         ...state,
         videogames: [...platformsFilter],
+        mantenerFiltros: [...platformsFilter],
       };
 
     case "ORDER_ALPH":
@@ -129,21 +133,27 @@ export default function rootReducer(state = intitalState, action) {
         ...state,
         detail: {},
       };
+    case "CLEAR_FILTERS":
+      const todosVg=state.allVideogames
+      return {
+        ...state,
+        videogames:todosVg,
+      };
     case "GET_PLATFORMS":
       return {
         ...state,
         allPlatforms: action.payload,
       };
     case "POST_VIDEOGAME":
-      alert(action.payload.data)
+      alert(action.payload.data);
       return {
         ...state,
       };
     case "DELETE_VIDEOGAME":
-      alert(action.payload.data)
-      return{
+      alert(action.payload.data);
+      return {
         ...state,
-      }
+      };
 
     default:
       return state;

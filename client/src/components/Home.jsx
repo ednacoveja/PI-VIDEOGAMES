@@ -13,8 +13,7 @@ import {
   orderAlph,
   orderRating,
   getPlatforms,
-  filterByPlatforms,
-  filterByGenres,
+  clearFilters
 } from "../redux/actions";
 
 export default function Home() {
@@ -29,9 +28,7 @@ export default function Home() {
 
   function handlerReload(e) {
     e.preventDefault();
-    dispatch(getVideogames());
-    dispatch(filterByGenres());
-    dispatch(filterByPlatforms());
+    dispatch(clearFilters());
   }
 
   //paginado

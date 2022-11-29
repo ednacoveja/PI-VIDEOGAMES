@@ -40,7 +40,6 @@ export default function Filters() {
         <option value="" hidden>
           Filter by Genres
         </option>
-        {console.log(allgenres)}
         {allgenres &&
           allgenres.map((g) => (
             <option value={g.name} key={g.name}>

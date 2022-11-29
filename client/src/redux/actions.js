@@ -105,6 +105,12 @@ export function clearDetail() {
   };
 }
 
+export function clearFilters() {
+  return {
+    type: "CLEAR_FILTERS",
+  };
+}
+
 export function getPlatforms() {
   return async function (dispatch) {
     let json = await axios("http://localhost:3001/platforms");
